@@ -1,0 +1,56 @@
+{
+  "verified_on": "2026-10-10",
+  "platform": "macOS",
+  "asr": "faster-whisper small, CPU int8",
+  "mock_used": false,
+  "summary_api_used": false,
+  "cases": [
+    {
+      "input": "公开样例 https://v.douyin.com/n234HvHgzN0/",
+      "source": "https://www.douyin.com/video/7616660340146752819",
+      "duration_seconds": 348.9959375,
+      "segment_count": 165,
+      "read_id_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          85,
+          164
+        ]
+      ],
+      "summary_points": 5,
+      "transcribe_exit_code": 0,
+      "save_exit_code": 0,
+      "media_validation": "真实下载，H.264视频帧与AAC音频帧可解码",
+      "summary_example": "examples/douyin-digest.md"
+    },
+    {
+      "input": "https://www.douyin.com/video/7611489793444171048",
+      "source": "https://www.douyin.com/video/7611489793444171048",
+      "duration_seconds": 23.637959,
+      "segment_count": 13,
+      "read_id_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "summary_points": 3,
+      "transcribe_exit_code": 0,
+      "save_exit_code": 0,
+      "installed_wheel_retested": true,
+      "wheel_asr_model": "已准备的本地small模型目录",
+      "wheel_cache": "隔离新缓存，重新取得媒体并真实识别"
+    }
+  ],
+  "unavailable_case": {
+    "input": "https://v.douyin.com/mXosMBsOHF0/",
+    "source": "https://www.douyin.com/video/7643403242492550139",
+    "result": "两移动节点均只返回不匹配的推荐视频；分享页缺少媒体详情，因此明确失败，没有产生假转写。",
+    "deletion_or_privacy_status": "未确定"
+  },
+  "publication": "只保存验证记录与AI摘要示例；原视频和完整识别稿保留在本地处理目录。",
+  "limits": "样例验证不代表所有抖音链接可用；未测准确率、长时间运行或跨平台真实E2E。"
+}

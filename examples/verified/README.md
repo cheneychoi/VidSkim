@@ -1,0 +1,18 @@
+# 一次实际的本地完整调用
+
+2026-10-10，独立 AI 代理使用安装后的 VidSkim wheel，按 `vidskim skill` 的流程处理 [sample.mp4](../sample.mp4)。输入为原创中文脚本的合成口播视频，不是真人录制素材。
+
+1. 本地 `small` 模型完成转写：视频时长 162 秒，语音约 146 秒，得到 13 段真实识别结果。
+2. AI 完整读取全部 13 段，根据识别稿生成 [summary.json](summary.json)。验证时没有读取原脚本或预置摘要。
+3. 实际执行 `vidskim save`，退出码为 `0`，得到 [summary.md](summary.md)。时间戳由程序根据引用的真实片段生成。
+
+[识别原稿](transcript.md) · [结构化原稿](transcript.json) · [验证记录](validation.json)
+
+为适合仓库展示，只调整了素材标题和来源路径，再用同一保存函数生成 Markdown；识别文字、段编号、时间戳和 AI 摘要均保留实际结果。原稿有少量同音错字，没有人工校正，不将这次验证当作识别准确率或性能基准。
+
+复现时，把下面的请求交给能执行命令和读写文件的 AI 工具：
+
+```text
+先运行 vidskim skill，按它的流程处理 ./examples/sample.mp4。
+完整读取转写稿，用你当前的模型生成精华，再调用 save 保存 Markdown。
+```
