@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "watch2note"
+version = "0.1.0"
+description = "Watch2Note 视频拾记：把内容留下，把思考展开。"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["httpx[socks]>=0.28,<1", "faster-whisper>=1.2,<2", "av>=16,<19"]
+
+[project.scripts]
+watch2note = "watch2note.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/watch2note"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"skills/watch2note/SKILL.md" = "watch2note/data/SKILL.md"
+"examples/summary.md" = "watch2note/data/demo.md"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
